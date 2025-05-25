@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Text, Icon, Badge, Spacer } from "@chakra-ui/react";
 import { FiSettings } from "react-icons/fi";
-import logo from "../assets/logo.png"; // Place your logo image in /src/assets/logo.png
+import logo from '../../../../assets/logo.png';
 
 const Header = () => (
   <Flex as="header" align="center" justify="space-between" p="4" bg="white" rounded="lg" boxShadow="sm">
