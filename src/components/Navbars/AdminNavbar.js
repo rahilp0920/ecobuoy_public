@@ -24,9 +24,31 @@ export default function AdminNavbar(props) {
     ...rest
   } = props;
 
-  // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
-  let mainText = useColorModeValue("gray.700", "gray.200");
-  let secondaryText = useColorModeValue("gray.400", "gray.200");
+  // Always call hooks at the top level!
+  // Compute all possible values
+  const defaultMainText = useColorModeValue("gray.700", "gray.200");
+  const defaultSecondaryText = useColorModeValue("gray.400", "gray.200");
+
+  const scrolledNavbarShadow = useColorModeValue(
+    "0px 7px 23px rgba(0, 0, 0, 0.05)",
+    "none"
+  );
+  const scrolledNavbarBg = useColorModeValue(
+    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.8) 110.84%)",
+    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
+  );
+  const scrolledNavbarBorder = useColorModeValue(
+    "#FFFFFF",
+    "rgba(255, 255, 255, 0.31)"
+  );
+  const scrolledNavbarFilter = useColorModeValue(
+    "none",
+    "drop-shadow(0px 7px 23px rgba(0, 0, 0, 0.05))"
+  );
+
+  // Set defaults
+  let mainText = defaultMainText;
+  let secondaryText = defaultSecondaryText;
   let navbarPosition = "absolute";
   let navbarFilter = "none";
   let navbarBackdrop = "blur(21px)";
@@ -35,23 +57,15 @@ export default function AdminNavbar(props) {
   let navbarBorder = "transparent";
   let secondaryMargin = "0px";
   let paddingX = "15px";
-  if (props.fixed === true)
-    if (scrolled === true) {
-      navbarPosition = "fixed";
-      navbarShadow = useColorModeValue(
-        "0px 7px 23px rgba(0, 0, 0, 0.05)",
-        "none"
-      );
-      navbarBg = useColorModeValue(
-        "linear-gradient(112.83deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.8) 110.84%)",
-        "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
-      );
-      navbarBorder = useColorModeValue("#FFFFFF", "rgba(255, 255, 255, 0.31)");
-      navbarFilter = useColorModeValue(
-        "none",
-        "drop-shadow(0px 7px 23px rgba(0, 0, 0, 0.05))"
-      );
-    }
+
+  if (props.fixed === true && scrolled === true) {
+    navbarPosition = "fixed";
+    navbarShadow = scrolledNavbarShadow;
+    navbarBg = scrolledNavbarBg;
+    navbarBorder = scrolledNavbarBorder;
+    navbarFilter = scrolledNavbarFilter;
+  }
+
   if (props.secondary) {
     navbarBackdrop = "none";
     navbarPosition = "absolute";
@@ -60,6 +74,7 @@ export default function AdminNavbar(props) {
     secondaryMargin = "22px";
     paddingX = "30px";
   }
+
   const changeNavbar = () => {
     if (window.scrollY > 1) {
       setScrolled(true);
@@ -68,6 +83,7 @@ export default function AdminNavbar(props) {
     }
   };
   window.addEventListener("scroll", changeNavbar);
+
   return (
     <Flex
       position={navbarPosition}
@@ -80,7 +96,7 @@ export default function AdminNavbar(props) {
       borderStyle="solid"
       transitionDelay="0s, 0s, 0s, 0s"
       transitionDuration=" 0.25s, 0.25s, 0.25s, 0s"
-      transition-property="box-shadow, background-color, filter, border"
+      transitionProperty="box-shadow, background-color, filter, border"
       transitionTimingFunction="linear, linear, linear, linear"
       alignItems={{ xl: "center" }}
       borderRadius="16px"
