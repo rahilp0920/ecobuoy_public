@@ -1,4 +1,4 @@
-// Mock data for EcoBuoy dashboard demo
+import React from 'react';// Mock data for EcoBuoy dashboard demo
 
 import camImg from "../assets/camera-sample.jpg";
 
