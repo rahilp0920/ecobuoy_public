@@ -1,4 +1,3 @@
-import React from 'react';// Chakra imports
 import { ChakraProvider, Portal, useDisclosure } from '@chakra-ui/react';
 import { RtlProvider } from 'components/RTLProvider/RTLProvider';
 import Configurator from 'components/Configurator/Configurator';
