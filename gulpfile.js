@@ -1,3 +1,4 @@
+import React from 'react';
 const gulp = require("gulp");
 const gap = require("gulp-append-prepend");
 
