@@ -8,7 +8,6 @@ import {
   DrawerContent,
   DrawerHeader,
   Flex,
-  Icon,
   Link,
   Switch,
   Text,
@@ -22,7 +21,7 @@ import React, { useState } from "react";
 import { FaTwitter, FaFacebook } from "react-icons/fa";
 
 export default function Configurator(props) {
-  const { secondary, isOpen, onClose, fixed, ...rest } = props;
+  const { secondary, isOpen, onClose, fixed } = props;
   const [switched, setSwitched] = useState(props.isChecked);
 
   const { colorMode, toggleColorMode } = useColorMode();
