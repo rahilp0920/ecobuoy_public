@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Flex, Text, Icon } from "@chakra-ui/react";
 import MiniTrendline from "./MiniTrendline";
 
