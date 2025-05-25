@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Flex, Text, Progress } from "@chakra-ui/react";
 
 /**
