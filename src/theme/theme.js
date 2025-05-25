@@ -1,3 +1,4 @@
+import React from 'react';
 import { extendTheme } from '@chakra-ui/react';
 import { globalStyles } from './styles';
 import { breakpoints } from './foundations/breakpoints';
