@@ -1,4 +1,4 @@
-// import
+import React from 'react';// import
 import Dashboard from "views/Dashboard/Dashboard";
 import Tables from "views/Dashboard/Tables";
 import Billing from "views/Dashboard/Billing";
