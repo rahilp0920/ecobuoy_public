@@ -1,3 +1,4 @@
+import React from 'react';
 import { mode } from '@chakra-ui/theme-tools';
 
 export const globalStyles = {
