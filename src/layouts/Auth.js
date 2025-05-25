@@ -11,7 +11,6 @@ import '@fontsource/roboto/700.css';
 import theme from 'theme/theme.js';
 
 export default function Pages(props) {
-	const { ...rest } = props;
 	// ref for the wrapper div
 	const wrapper = React.createRef();
 	React.useEffect(() => {
@@ -40,7 +39,7 @@ export default function Pages(props) {
 		}
 		return activeRoute;
 	};
-	const getActiveNavbar = (routes) => {
+/*	const getActiveNavbar = (routes) => {
 		let activeNavbar = false;
 		for (let i = 0; i < routes.length; i++) {
 			if (routes[i].category) {
@@ -57,7 +56,7 @@ export default function Pages(props) {
 			}
 		}
 		return activeNavbar;
-	};
+	}; */
 	const getRoutes = (routes) => {
 		return routes.map((prop, key) => {
 			if (prop.collapse) {
