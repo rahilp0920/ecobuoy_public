@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Text } from "@chakra-ui/react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
