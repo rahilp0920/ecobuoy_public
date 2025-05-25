@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, SimpleGrid, Grid, GridItem } from "@chakra-ui/react";
 import { FaTint, FaThermometerHalf, FaBatteryHalf } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
