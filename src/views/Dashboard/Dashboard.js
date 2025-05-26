@@ -22,7 +22,7 @@ import {
 } from "../../data/mockData";
 
 const Dashboard = () => (
-  <Box px={{ base: 2, md: 8 }} py={6} bg="gray.100" minH="100vh">
+  <Box px={{ base: 2, md: 8 }} pt={20} bg="gray.100" minH="100vh">
     <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
       <MetricCard
         icon={FaTint}
