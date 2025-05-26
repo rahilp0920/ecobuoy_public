@@ -1,29 +1,29 @@
-import React from 'react';
-import { Box, Flex, Text, Icon } from "@chakra-ui/react";
-import MiniTrendline from "./MiniTrendline";
+import React from "react";
+import { Box, Image, Text } from "@chakra-ui/react";
 
 /**
- * MetricCard: displays a key metric with icon, value, unit, and mini trendline.
+ * CameraSnapshot: Displays a live camera image and timestamp.
  * @param {object} props
- * @param {React.ElementType} props.icon - Icon component (e.g., from react-icons)
- * @param {string} props.label - Label for the metric (e.g., "TDS")
- * @param {number|string} props.value - Metric value
- * @param {string} props.unit - Unit for the value (e.g., "ppm")
- * @param {Array<number>} props.trendData - Array of numbers for the trendline
- * @param {string} props.accentColor - Chakra color for highlights
+ * @param {string} props.image - Image URL or import
+ * @param {string} props.timestamp - Timestamp string
  */
-const MetricCard = ({ icon, label, value, unit, trendData, accentColor }) => (
-  <Box bg="white" boxShadow="lg" rounded="xl" p="6" w="100%" maxW="sm">
-    <Flex align="center" mb="4">
-      <Icon as={icon} w={8} h={8} color={accentColor} />
-      <Text ml="4" fontSize="lg" color="gray.600">{label}</Text>
-    </Flex>
-    <Flex align="baseline" mb="2">
-      <Text fontSize="3xl" fontWeight="bold" color={accentColor}>{value}</Text>
-      <Text fontSize="lg" color="gray.400" ml="2">{unit}</Text>
-    </Flex>
-    <MiniTrendline data={trendData} color={accentColor} />
+const CameraSnapshot = ({ image, timestamp }) => (
+  <Box bg="white" boxShadow="lg" rounded="xl" p="4" mb="6" textAlign="center">
+    <Text fontWeight="bold" mb="2" color="teal.600">Live Camera</Text>
+    <Image
+      src={image}
+      alt="Camera Snapshot"
+      maxH="220px"
+      maxW="100%"
+      objectFit="contain"
+      mx="auto"
+      borderRadius="md"
+      fallbackSrc="https://via.placeholder.com/220x150?text=No+Image"
+    />
+    <Text color="gray.400" fontSize="sm" mt="2">
+      {timestamp}
+    </Text>
   </Box>
 );
 
-export default MetricCard;
+export default CameraSnapshot;
