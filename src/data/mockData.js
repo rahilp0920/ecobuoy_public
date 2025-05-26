@@ -2,6 +2,11 @@ import React from 'react';// Mock data for EcoBuoy dashboard demo
 
 import camImg from "../assets/camera-sample.jpg";
 
+export const cameraSnapshot = {
+  image: camImg,
+  timestamp: "2025-05-24 21:45"
+};
+
 // Buoy's latest location
 export const buoyLocation = {
   lat: 19.0798,
