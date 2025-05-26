@@ -51,4 +51,3 @@ const SidebarContent = ({ logoText, routes }) => {
 }
 
 export default SidebarContent
-export default SidebarContent
