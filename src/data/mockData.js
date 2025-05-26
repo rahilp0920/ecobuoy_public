@@ -20,10 +20,7 @@ export const plasticMarkers = [
 ];
 
 // For the camera snapshot
-export const cameraSnapshot = {
-  image: camImg,
-  timestamp: "2025-05-24 21:45"
-};
+
 
 // Trend data for metric cards and graphs
 export const metricTrends = {
