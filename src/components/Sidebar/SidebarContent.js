@@ -19,7 +19,7 @@ import logo from "assets/logo.png"; // <-- Import your logo
 
 const SidebarContent = ({ logoText, routes }) => {
   // ...rest of your code...
-
+  const links = <>{createLinks(routes)}</>;
   return (
     <>
       <Box pt={"25px"} mb="12px">
