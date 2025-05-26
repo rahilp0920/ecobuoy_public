@@ -1,15 +1,47 @@
-import React from 'react';
-import { LineChart, Line } from "recharts";
+import React from "react";
+import { Box, Text } from "@chakra-ui/react";
+import Chart from "react-apexcharts";
 
-/**
- * MiniTrendline: Renders a small sparkline chart for use in metric cards.
- * @param {Array<number>} data - Array of numbers representing the trend.
- * @param {string} color - Color of the trend line.
- */
-const MiniTrendline = ({ data, color = "blue" }) => (
-  <LineChart width={80} height={24} data={data.map((v, i) => ({ v, i }))}>
-    <Line type="monotone" dataKey="v" stroke={color} dot={false} strokeWidth={2} />
-  </LineChart>
-);
+const MiniTrendline = ({ data = [], color, label }) => {
+  const values = data.map((item) => item.value);
+
+  const options = {
+    chart: {
+      type: "line",
+      sparkline: {
+        enabled: true,
+      },
+    },
+    stroke: {
+      curve: "smooth",
+      width: 2,
+      colors: [color || "#3182CE"],
+    },
+    tooltip: {
+      enabled: false,
+    },
+  };
+
+  const series = [
+    {
+      data: values,
+    },
+  ];
+
+  return (
+    <Box>
+      <Text fontSize="sm" color="gray.500" mb={2}>
+        {label}
+      </Text>
+      <Chart
+        options={options}
+        series={series}
+        type="line"
+        height={50}
+        width="100%"
+      />
+    </Box>
+  );
+};
 
 export default MiniTrendline;
