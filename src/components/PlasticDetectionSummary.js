@@ -1,25 +1,36 @@
-import React from 'react';
-import { Box, Flex, Text, Progress } from "@chakra-ui/react";
+import React from "react";
+import { Box, Text, SimpleGrid, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 
-/**
- * PlasticDetectionSummary: Shows summary with icons/percentages for types of plastic detected.
- * @param {object} props
- * @param {Array<{type: string, icon: string, count: number, percent: number}>} props.data
- */
-const PlasticDetectionSummary = ({ data }) => (
-  <Box bg="white" boxShadow="lg" rounded="xl" p="6" my="6" w="100%">
-    <Text fontWeight="bold" color="teal.600" mb="4">Plastic Detection Summary</Text>
-    <Flex direction="column" gap="3">
-      {data.map((item, i) => (
-        <Flex align="center" key={i}>
-          <Text fontSize="2xl" mr="3">{item.icon}</Text>
-          <Text fontWeight="semibold" minW="60px">{item.type}</Text>
-          <Progress value={item.percent} colorScheme="blue" flex="1" mx="4" borderRadius="md" />
-          <Text fontSize="md" ml="2">{item.count} <span style={{color:'#aaa'}}>{item.percent}%</span></Text>
-        </Flex>
-      ))}
-    </Flex>
-  </Box>
-);
+const PlasticDetectionSummary = ({ data }) => {
+  // Expecting data = { bottle: number, bag: number, other: number }
+  const { bottle = 0, bag = 0, other = 0 } = data || {};
+  const total = bottle + bag + other;
+
+  return (
+    <Box bg="white" boxShadow="md" p={4} rounded="lg" mb={6}>
+      <Text fontWeight="bold" mb={2} color="teal.600">
+        Plastic Detection Summary
+      </Text>
+      <SimpleGrid columns={2} spacing={4} mb={2}>
+        <Stat>
+          <StatLabel>Bottles</StatLabel>
+          <StatNumber>{bottle}</StatNumber>
+        </Stat>
+        <Stat>
+          <StatLabel>Bags</StatLabel>
+          <StatNumber>{bag}</StatNumber>
+        </Stat>
+        <Stat>
+          <StatLabel>Other</StatLabel>
+          <StatNumber>{other}</StatNumber>
+        </Stat>
+        <Stat>
+          <StatLabel>Total</StatLabel>
+          <StatNumber>{total}</StatNumber>
+        </Stat>
+      </SimpleGrid>
+    </Box>
+  );
+};
 
 export default PlasticDetectionSummary;
