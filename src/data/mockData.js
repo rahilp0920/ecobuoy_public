@@ -9,8 +9,8 @@ export const cameraSnapshot = {
 
 // Buoy's latest location
 export const buoyLocation = {
-  lat: 19.0798,
-  lng: 72.8777
+  lat: 40.5360,
+  lng: -74.3607
 };
 
 // Markers for plastic detections (lat/lng, type, timestamp)
