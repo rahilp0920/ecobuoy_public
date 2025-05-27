@@ -26,4 +26,4 @@ const CameraSnapshot = ({ image, timestamp }) => (
   </Box>
 );
 
-export default CameraSnapshot;
+export default CameraSnapshot
