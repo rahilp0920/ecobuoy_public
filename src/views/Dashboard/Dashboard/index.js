@@ -32,9 +32,14 @@ import WorkWithTheRockets from "./components/WorkWithTheRockets";
 
 export default function Dashboard() {
   const iconBoxInside = useColorModeValue("white", "white");
+  // Fetch the latest camera image and timestamp from the backend
+  const { image, timestamp } = useLatestCamera();
 
   return (
     <Flex flexDirection='column' pt={{ base: "120px", md: "75px" }}>
+      {/* Live Camera Snapshot at the top of the dashboard */}
+      <CameraSnapshot image={image} timestamp={timestamp} />
+
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
         <MiniStatistics
           title={"Today's Moneys"}
