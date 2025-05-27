@@ -7,7 +7,7 @@ export default function useLatestCamera() {
     const res = await fetch('http://localhost:5000/api/latest-camera');
     const json = await res.json();
     setData({
-      image: json.image ? `http://localhost:5000/api${json.image}` : '',
+      image: json.image ? `http://localhost:5000/api${json.image}?t=${Date.now()}` : '',
       timestamp: json.timestamp
     });
   };
