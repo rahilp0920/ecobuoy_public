@@ -29,13 +29,15 @@ const WorkWithTheRockets = ({ title, description, backgroundImage }) => {
         bgSize='cover'
         position='relative'
         borderRadius='15px'>
-        <Box
+       <Box
           bg='linear-gradient(360deg, rgba(49, 56, 96, 0.16) 0%, rgba(21, 25, 40, 0.88) 100%)'
           w='100%'
           position='absolute'
           h='inherit'
           borderRadius='inherit'
-          ref={overlayRef}></Box>
+          ref={overlayRef}
+          pointerEvents="none" // <-- Add this line
+      ></Box>
         <Portal containerRef={overlayRef}>
           <Flex
             flexDirection='column'
