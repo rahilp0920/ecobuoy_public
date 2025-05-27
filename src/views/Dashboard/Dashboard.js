@@ -11,7 +11,8 @@ import MonthlyTrendsMap from "../../components/MonthlyTrendsMap";
 import PlasticDetectionSummary from "../../components/PlasticDetectionSummary";
 import TrendGraphs from "../../components/TrendGraphs";
 import Footer from "../../components/Footer";
-import useLatestCamera from "../../hooks/useLatestCamera"; // <-- Import the hook!
+import useLatestCamera from "../../hooks/useLatestCamera";
+import useLatestData from "../../hooks/useLatestData";
 
 import {
   buoyLocation,
@@ -22,43 +23,53 @@ import {
 } from "../../data/mockData";
 
 const Dashboard = () => {
-  const { image, timestamp } = useLatestCamera(); // <-- Use the live image
+  const { image, timestamp: cameraTimestamp } = useLatestCamera();
+  const {
+    tds,
+    temperature,
+    battery,
+    bottle,
+    bag,
+    other,
+    plastic,
+    timestamp: dataTimestamp
+  } = useLatestData();
 
   return (
     <Box px={{ base: 2, md: 8 }} pt={20} bg="gray.100" minH="100vh">
-      <CameraSnapshot image={image} timestamp={timestamp} />
+      <CameraSnapshot image={image} timestamp={cameraTimestamp || dataTimestamp} />
 
       <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
         <MetricCard
           icon={FaTint}
           label="TDS"
-          value={metricTrends.tds[metricTrends.tds.length - 1]}
+          value={tds !== null ? tds : "-"}
           unit="ppm"
-          trendData={metricTrends.tds}
+          trendData={[]} // You can add trend logic if you want
           accentColor="blue.400"
         />
         <MetricCard
           icon={FaThermometerHalf}
           label="Temperature"
-          value={metricTrends.temp[metricTrends.temp.length - 1]}
+          value={temperature !== null ? temperature : "-"}
           unit="°C"
-          trendData={metricTrends.temp}
+          trendData={[]}
           accentColor="orange.400"
         />
         <MetricCard
           icon={FaBatteryHalf}
           label="Battery"
-          value={metricTrends.battery[metricTrends.battery.length - 1]}
+          value={battery !== null ? battery : "-"}
           unit="%"
-          trendData={metricTrends.battery}
+          trendData={[]}
           accentColor="green.400"
         />
         <MetricCard
           icon={MdDeleteSweep}
           label="Plastic"
-          value={metricTrends.plastic[metricTrends.plastic.length - 1]}
+          value={plastic !== null ? plastic : "-"}
           unit="detections"
-          trendData={metricTrends.plastic}
+          trendData={[]}
           accentColor="teal.400"
         />
       </SimpleGrid>
@@ -75,7 +86,11 @@ const Dashboard = () => {
             <MiniTrendMap metric="tds" data={monthlyTrends.tds} />
             <MiniTrendMap metric="temp" data={monthlyTrends.temp} />
           </SimpleGrid>
-          <PlasticDetectionSummary data={plasticSummary} />
+          <PlasticDetectionSummary data={{
+            bottle: bottle !== null ? bottle : 0,
+            bag: bag !== null ? bag : 0,
+            other: other !== null ? other : 0
+          }} />
         </GridItem>
       </Grid>
 
